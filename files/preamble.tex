@@ -1,0 +1,69 @@
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+\newcommand{\f}{\frac}
+\newcommand{\del}{\partial}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\eps}{\varepsilon}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\Om}{\Omega}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+%\usepackage{booktabs}
+\usepackage{array} 
+\usepackage{amsthm}
+\usepackage{todonotes}
+%\usepackage{amssymb}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{multirow,booktabs}
+\usepackage{scrextend}
+
+\theoremstyle{definition}
+\newtheorem{de}{Definition}
+\theoremstyle{plain}
+\newtheorem{prop}[de]{Proposition}
+\newtheorem{lemma}[de]{Lemma}
+\newtheorem{theorem}[de]{Theorem}
+\newtheorem{corollary}[de]{Corollary}
+\newtheorem{cor}[de]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[de]{Remark}
+
+
+
+% The code below is to enable several columns in \itemize:
+\usepackage{etoolbox,refcount}
+\usepackage{multicol}
+
+\newcounter{countitems}
+\newcounter{nextitemizecount}
+\newcommand{\setupcountitems}{%
+  \stepcounter{nextitemizecount}%
+  \setcounter{countitems}{0}%
+  \preto\item{\stepcounter{countitems}}%
+}
+\makeatletter
+\newcommand{\computecountitems}{%
+  \edef\@currentlabel{\number\c@countitems}%
+  \label{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+}
+\newcommand{\nextitemizecount}{%
+  \getrefnumber{countitems@\number\c@nextitemizecount}%
+}
+\newcommand{\previtemizecount}{%
+  \getrefnumber{countitems@\number\numexpr\value{nextitemizecount}-1\relax}%
+}
+\makeatother    
+\newenvironment{AutoMultiColItemize}{%
+\ifnumcomp{\nextitemizecount}{>}{3}{\begin{multicols}{2}}{}%
+\setupcountitems\begin{itemize}}%
+{\end{itemize}%
+\unskip\computecountitems\ifnumcomp{\previtemizecount}{>}{3}{\end{multicols}}{}}

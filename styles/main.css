@@ -22,18 +22,19 @@ body {
 h1, h2 {
 	color: #ce1500;
 	font-style: normal;
-	font-weight: 900;
 	font-family: "Source Sans Pro";
 }
 
 h1 {
 	font-size: 50px;
+	font-weight: 900;
 	margin-top: 0px;
 	margin-bottom: 0px;
 	text-align: center;
 	text-transform: uppercase;
 }
 h2 {
+	font-weight: 600;
 	margin-top: 0.5em;
 	text-align: center;
 	font-size: 40px;
